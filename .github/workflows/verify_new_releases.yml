@@ -25,7 +25,7 @@ jobs:
         id: check_issue
         run: |
           ISSUE_TITLE="Synapse ${{ steps.synapse.outputs.release }} is available"
-          ISSUE_EXISTS=$(gh issue list --search "\"$ISSUE_TITLE\" in:title" --json title --jq '.[] | select(.title == "'"$ISSUE_TITLE"'") | .title')
+          ISSUE_EXISTS=$(gh issue list --state open --search "\"$ISSUE_TITLE\" in:title" --json title --jq '.[] | select(.title == "'"$ISSUE_TITLE"'") | .title')
           echo "issue_exists=$ISSUE_EXISTS" >> $GITHUB_ENV
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
