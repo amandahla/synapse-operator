@@ -35,7 +35,7 @@ jobs:
         run: echo "Issue already exists. Exiting."
         
       - name: Create new release issue
-        if: ${{ env.SYNAPSE_CURRENT_VERSION != steps.synapse.outputs.release }}
+        if: ${{ env.SYNAPSE_CURRENT_VERSION != steps.synapse.outputs.release && ! env.issue_exists}}
         run: |
           
           if [[ $CLOSE_PREVIOUS == true ]]; then
