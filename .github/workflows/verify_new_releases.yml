@@ -18,7 +18,9 @@ jobs:
           owner: element-hq
           repo: synapse
           excludes: prerelease, draft
-
+          
+      - uses: actions/checkout@v4.1.1
+      
       - name: Check if issue already exists
         id: check_issue
         run: |
